@@ -6,31 +6,37 @@ import (
 	"fmt"
 )
 
-const count int = 8
-
 // non decreasing, remove in place, return unique quantity
 func removeDupes(numArray []int) (uniqueNums int) {
-	var lastUnique = numArray[0]
-	uniqueNums = 1 //first number is always unique
+	var lastUnique = -999 //the most recent unique is set to be below -100 which is the minimum value stated to be valid
+	uniqueNums = 0
 
-	var modifiedArray = [count]int{numArray[0], 0, 0, 0, 0, 0, 0, 0} //put first number into the array as it has to be unique
-	var modArrayIndex = 1
+	modifiedArray := make([]int, len(numArray))
+	var modArrayIndex = 0
 
-	for index := 1; index < len(numArray); index++ {
-		if numArray[index] != lastUnique {
-			lastUnique = numArray[index]
+	for index := 0; index < len(numArray); index++ {
+		if numArray[index] != lastUnique { //ensure the current number isnt the same as the most recent unique
+			lastUnique = numArray[index] //update the most recent unique
 			uniqueNums++
-			modifiedArray[modArrayIndex] = numArray[index]
+			modifiedArray[modArrayIndex] = numArray[index] //add current number to the new array without duplicates
 			modArrayIndex++
 		}
 	}
-	fmt.Print(modifiedArray)
+
+	for index := 0; index < len(numArray); index++ { //modify array to so that the unique elements only are present and in order
+		if index < uniqueNums {
+			numArray[index] = modifiedArray[index] //repopulate the array to remove duplicates
+		} else {
+			numArray[index] = -999 //fill the rest of the array with filler
+		}
+	}
+
 	return uniqueNums
 }
 
 func main() {
-	arrayOfNums := [count]int{1, 2, 2, 4, 5, 5, 5, 6}
-	uniques := removeDupes(arrayOfNums[:])
+	arrayOfNums := [8]int{1, 1, 1, 1, 1, 1, 1, 1} //array is in order and has duplicates
+	uniques := removeDupes(arrayOfNums[:])        //give back number of unique elements
 	fmt.Print("\nAmount of unique numbers: ")
 	fmt.Print(uniques)
 }
