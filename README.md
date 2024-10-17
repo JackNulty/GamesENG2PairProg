@@ -1,7 +1,7 @@
 # GamesENG2PairProg
 ## Authors: Jack Nulty, Shane Conroy, Darragh McKernan
 ## Description:
-#### A pair programmed project solving 2 leet code problems using GO and tested in GO
+#### A pair programmed project solving 2 leet code problems using GO and tested in GO. Tested with edge coverage and has 100% coverage.
 ## How to run:
 #### How to run on Windows - Download the file and open the command terminal. Ensure GO is installed by typing 'go version' in the terminal. Navigate to the folder labelled removeDupes or roman in the terminal. When in the folder type 'go test' to see the outcome of the tests.
 ## Licence: 
