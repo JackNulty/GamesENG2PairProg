@@ -1,5 +1,5 @@
 # GamesENG2PairProg
-## Authors Jack Nulty, Shane Conroy, Darragh McKernan
+## Authors: Jack Nulty, Shane Conroy, Darragh McKernan
 ## Description:
 #### A pair programmed project solving 2 leet code problems using GO and tested in GO
 ## How to run:
