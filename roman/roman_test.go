@@ -1,3 +1,5 @@
+// Authors
+// Shane Conroy , Jack Nulty and Darragh McKernan
 package main
 
 import (
