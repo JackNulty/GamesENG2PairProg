@@ -8,6 +8,10 @@ import (
 
 // non decreasing, remove in place, return unique quantity
 func removeDupes(numArray []int) (uniqueNums int) {
+	if len(numArray) < 1 || len(numArray) > 30000 { //1 <= nums.length <= 3 * 10^4
+		return 0
+	}
+
 	var lastUnique = -999 //the most recent unique is set to be below -100 which is the minimum value stated to be valid
 	uniqueNums = 0
 
@@ -15,6 +19,13 @@ func removeDupes(numArray []int) (uniqueNums int) {
 	var modArrayIndex = 0
 
 	for index := 0; index < len(numArray); index++ {
+		if numArray[index] > 100 || numArray[index] < -100 { //-100 <= nums[i] <= 100   must be non decreasing
+			return 0
+		} else if index > 0 {
+			if numArray[index] < numArray[index-1] { //make sure its non decreasing
+				return 0
+			}
+		}
 		if numArray[index] != lastUnique { //ensure the current number isnt the same as the most recent unique
 			lastUnique = numArray[index] //update the most recent unique
 			uniqueNums++
@@ -30,6 +41,7 @@ func removeDupes(numArray []int) (uniqueNums int) {
 			numArray[index] = -999 //fill the rest of the array with filler
 		}
 	}
+	//fmt.Print(numArray)//display the updated array for testing
 
 	return uniqueNums
 }
